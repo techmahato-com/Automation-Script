@@ -3,6 +3,7 @@
 # Define domain names
 DEV_DOMAIN="dev.techmahato.com"
 PROD_DOMAIN="prod.techmahato.com"
+YOUR_EMAIL="your_email@example.com"
 
 # Step 1: Update and upgrade packages
 sudo apt update
@@ -62,4 +63,12 @@ sudo a2ensite $DEV_DOMAIN.conf
 sudo a2ensite $PROD_DOMAIN.conf
 sudo a2enmod ssl rewrite
 sudo systemctl restart apache2
+
+# Step 5: Secure Apache with Let's Encrypt
+sudo apt install -y certbot python3-certbot-apache
+sudo certbot --apache --non-interactive --agree-tos --email $YOUR_EMAIL -d $DEV_DOMAIN -d www.$DEV_DOMAIN -d $PROD_DOMAIN -d www.$PROD_DOMAIN
+
+# Step 6: Check SSL renewal status
+sudo systemctl status certbot.timer
+sudo certbot renew --dry-run
 
