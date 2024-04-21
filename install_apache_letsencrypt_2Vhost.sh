@@ -64,6 +64,10 @@ sudo a2ensite $PROD_DOMAIN.conf
 sudo a2enmod ssl rewrite
 sudo systemctl restart apache2
 
+# Create index.html files with some message
+echo "<h1>Welcome to $DEV_DOMAIN</h1><p>This is the development server.</p>" | sudo tee /var/www/html/$DEV_DOMAIN/index.html > /dev/null
+echo "<h1>Welcome to $PROD_DOMAIN</h1><p>This is the production server.</p>" | sudo tee /var/www/html/$PROD_DOMAIN/index.html > /dev/null
+
 # Step 5: Secure Apache with Let's Encrypt
 sudo apt install -y certbot python3-certbot-apache
 sudo certbot --apache --non-interactive --agree-tos --email $YOUR_EMAIL -d $DEV_DOMAIN -d www.$DEV_DOMAIN -d $PROD_DOMAIN -d www.$PROD_DOMAIN
