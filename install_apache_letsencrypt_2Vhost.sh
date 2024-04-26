@@ -70,7 +70,8 @@ echo "<h1>Welcome to $PROD_DOMAIN</h1><p>This is the production server.</p>" | s
 
 # Step 5: Secure Apache with Let's Encrypt
 sudo apt install -y certbot python3-certbot-apache
-sudo certbot --apache --non-interactive --agree-tos --email $YOUR_EMAIL -d $DEV_DOMAIN -d www.$DEV_DOMAIN -d $PROD_DOMAIN -d www.$PROD_DOMAIN
+sudo certbot --apache --non-interactive --agree-tos --email $YOUR_EMAIL -d $DEV_DOMAIN -d $PROD_DOMAIN
+#sudo certbot --apache --non-interactive --agree-tos --email $YOUR_EMAIL -d $DEV_DOMAIN -d www.$DEV_DOMAIN -d $PROD_DOMAIN -d www.$PROD_DOMAIN
 
 # Step 6: Check SSL renewal status
 sudo systemctl status certbot.timer
