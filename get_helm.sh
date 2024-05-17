@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the Helm version
-HELM_VERSION="3.6.0"
+HELM_VERSION="3.14.0"
 
 # Define the download URL for the Helm binary
 HELM_URL="https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz"
